@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Básico</title>
+
+  <!-- Vinculación con Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  
+</head>
+<body>
+  
+  <header>
+    <nav></nav>
+  </header>
+
+  <main>
+    <section class="container mt-3">
+      <form action="/update" method="post" autocomplete="off" id="formulario-actualizar">
+        <div class="card">
+          <div class="card-header">
+            <a href="/" class="btn btn-sm btn-secondary">Lista de libros</a>
+          </div>
+
+          <div class="card-body">
+            <!-- Fila de Título y Autor -->
+            <input type="hidden" value="<%= libro.id %>" id="id" name="id">
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" value="<%= libro.titulo %>" id="titulo" name="titulo" required>
+                  <label for="titulo">Título</label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" value="<%= libro.autor %>" id="autor" name="autor" required>
+                  <label for="autor">Autor</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fila de Género y Precio -->
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" value="<%= libro.genero %>" id="genero" name="genero" required>
+                  <label for="genero">Género</label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control text-end" value="<%= libro.precio %>" id="precio" name="precio" required>
+                  <label for="precio">Precio</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-sm btn-primary">Actualizar</button>
+            <a href="/" class="btn btn-sm btn-secondary">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p></p>
+  </footer>
+
+  <script>
+    const formulario = document.querySelector("#formulario-actualizar");
+    formulario.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if(confirm("¿Estás seguro de actualizar este libro?")) {
+        formulario.submit();
+      }
+    });
+  </script>
+
+</body>
+</html>
